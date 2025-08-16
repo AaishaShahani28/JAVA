@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class LibraryApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] books = {"Java Basics", "C Programming", "Python Guide"};
+        boolean[] available = {true, true, true};
+
+        while (true) {
+            System.out.println("\n1. View Books  2. Borrow  3. Return  4. Exit");
+            int ch = sc.nextInt();
+
+            if (ch == 1) {
+                for (int i = 0; i < books.length; i++)
+                    System.out.println((i+1) + ". " + books[i] + " - " + (available[i]?"Available":"Borrowed"));
+            } else if (ch == 2) {
+                int b = sc.nextInt()-1;
+                if (available[b]) { available[b]=false; System.out.println("Borrowed " + books[b]); }
+                else System.out.println("Not available!");
+            } else if (ch == 3) {
+                int b = sc.nextInt()-1;
+                available[b]=true; System.out.println("Returned " + books[b]);
+            } else break;
+        }
+        sc.close();
+    }
+}
